@@ -15,6 +15,8 @@ import approval_image from "./approval_image.png";
 import collection_image from "./collection_image.png";
 import decisioning_image from "./decisioning_image.png";
 import origination_image from "./origination_image.png";
+import ceo_image from "./ceo_image.png";
+
 export const assets = {
   logo,
   sign_in_icon,
@@ -33,4 +35,5 @@ export const assets = {
   approval_image,
   decisioning_image,
   collection_image,
+  ceo_image,
 };

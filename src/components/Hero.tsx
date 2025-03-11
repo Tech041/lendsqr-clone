@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const headingStyle = "lg:py-2 lg:my-2";
 const Hero = () => {
   return (
-    <section className="mt-2 bg-blue-50/35">
+    <section className="pt-5 bg-blue-50/35">
       <Container>
         {/* main div for the section  */}
         <div className="flex flex-col lg:flex-row justify-between items-center h-screen">

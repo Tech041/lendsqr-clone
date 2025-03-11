@@ -195,7 +195,7 @@ const Navbar = () => {
                     Log In
                   </Link>
                 </div>
-                <div className=" w-full bg-secondary-100 rounded text-center">
+                <div className=" w-full bg-secondary-200 rounded text-center">
                   <Link to={"/register"}>
                     <button className=" text-white font-semibold  py-3">
                       Create Free Account

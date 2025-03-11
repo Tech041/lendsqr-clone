@@ -11,6 +11,7 @@ export default {
         "primary-200": "#213F7D",
         "primary-300": "#616161",
         "secondary-100": "#39CDCC",
+        "secondary-200": "#40BABA",
       },
     },
     screens: {

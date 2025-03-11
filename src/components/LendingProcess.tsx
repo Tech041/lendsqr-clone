@@ -7,10 +7,10 @@ import { assets } from "../assets/assets";
 const headingStyle = "lg:py-2 lg:my-2 text-3xl lg:text-[40px] font-bold";
 const myStyles = "hover:bg-gray-100 hover:cursor-pointer";
 const LendingProcess = () => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Origination");
   const [dropDown, setDropDown] = useState(false);
   return (
-    <section>
+    <section className="my-2 py-2 h-[1500px] w-full">
       <Container>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
           <div className="text-primary-200   mt-5 py-2 flex-1 ">
@@ -24,10 +24,10 @@ const LendingProcess = () => {
               </p>
             </div>
           </div>
-          <div className="flex-1 "></div>
+          <div className="flex-1 h-[400px]  "></div>
         </div>
         {/* selection div */}
-        <div className="hidden lg:flex justify-center items- w-full ">
+        <div className="hidden lg:flex justify-center items-center w-full ">
           <div className="bg-gray-100 flex justify-evenly w-full text-black my-5 py-2 px-3 rounded-md">
             <div
               onClick={() => setSelected("Origination")}
