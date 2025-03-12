@@ -10,7 +10,7 @@ const LendingProcess = () => {
   const [selected, setSelected] = useState("Origination");
   const [dropDown, setDropDown] = useState(false);
   return (
-    <section className="my-2 py-2 h-[1500px] w-full">
+    <section className="mt-2 mb-20 lg:mb-10  py-2 h-[1600px] lg:h-[1300px] w-full">
       <Container>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
           <div className="text-primary-200   mt-5 py-2 flex-1 ">

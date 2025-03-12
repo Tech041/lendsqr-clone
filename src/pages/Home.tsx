@@ -1,4 +1,5 @@
 import AdvertisementSection from "../components/AdvertisementSection";
+import Benefits from "../components/Benefits";
 import CeoCard from "../components/CeoCard";
 import Hero from "../components/Hero";
 import LendingProcess from "../components/LendingProcess";
@@ -10,6 +11,7 @@ const Home = () => {
       <AdvertisementSection />
       <LendingProcess />
       <CeoCard />
+      <Benefits />
     </div>
   );
 };

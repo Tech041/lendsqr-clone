@@ -16,6 +16,11 @@ import collection_image from "./collection_image.png";
 import decisioning_image from "./decisioning_image.png";
 import origination_image from "./origination_image.png";
 import ceo_image from "./ceo_image.png";
+import benefit_image from "./benefit_image.png";
+import cost_img from "./cost_img1.png";
+import com_img from "./com_image.png";
+import com_2 from "./com2_mage.png";
+import fast_img from "./fast_image.png";
 
 export const assets = {
   logo,
@@ -36,4 +41,9 @@ export const assets = {
   decisioning_image,
   collection_image,
   ceo_image,
+  benefit_image,
+  cost_img,
+  com_2,
+  com_img,
+  fast_img,
 };

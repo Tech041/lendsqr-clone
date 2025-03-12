@@ -14,7 +14,7 @@ const imageStyle =
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <header className="w-full py-5 fixed bg-white  lg:bg-blue-50/35 z-50 backdrop-blur-2xl border-b-2 lg:border-b-0  ">
+    <header className="w-full py-5 fixed bg-white  shadow-xl z-50 backdrop-blur-2xl border-b-2 lg:border-b-0  ">
       <Container>
         <div className="w-full">
           <div className="flex justify-between items-center ">
