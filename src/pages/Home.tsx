@@ -1,4 +1,5 @@
 import AdvertisementSection from "../components/AdvertisementSection";
+import ApiBuild from "../components/ApiBuild";
 import Benefits from "../components/Benefits";
 import CeoCard from "../components/CeoCard";
 import Hero from "../components/Hero";
@@ -12,6 +13,7 @@ const Home = () => {
       <LendingProcess />
       <CeoCard />
       <Benefits />
+      <ApiBuild />
     </div>
   );
 };
