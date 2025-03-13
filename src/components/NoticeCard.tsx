@@ -9,7 +9,7 @@ interface NoticeCardProp {
 }
 const NoticeCard = ({ src, text1, text2, text3, text4 }: NoticeCardProp) => {
   return (
-    <div className=" w- px-5 mt-10 py-10 lg:w-[45%] h-[670px] lg:h-[700px] bg-[#FAFAFA] border rounded-md shadow-md">
+    <div className=" w-full px-5 mt-10 py-10 lg:w-[45%] h-[730px] lg:h-[700px] bg-[#FAFAFA] border rounded-md shadow-md">
       <div className="mt-5 pt-10 flex justify-center w-full ">
         <div className="  flex justify-center w-[50%] h-[50%]">
           <img src={src} alt="" className="w-full h-full" />

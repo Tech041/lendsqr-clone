@@ -58,7 +58,7 @@ const Lenders = () => {
         <div className=" pt-1 flex flex-col lg:flex-row lg:items-center lg:justify-center gap-4">
           <div className="relative flex-1 ">
             <ManagementCard
-              className="h-[250px] lg:h-[300px] w-full  bg-[#A54800] px-3 rounded-lg"
+              className="h-[300px]  w-full  bg-[#A54800] px-3 rounded-lg"
               text1="1/20 the cost"
               text2="Getting started with Lendsqr is practically free. Our lenders leverage a robust infrastructure at 1/20 the cost it would take to build theirs!"
               text3="1/20"
@@ -66,7 +66,7 @@ const Lenders = () => {
           </div>
           <div className="relative flex-1 ">
             <ManagementCard
-              className="h-[250px] lg:h-[300px] w-full  bg-[#206A83] px-3 rounded-lg"
+              className="h-[300px]  w-full  bg-[#206A83] px-3 rounded-lg"
               text1="30 mins average time to market"
               text2="It takes no less than 30 mins for a lender to sign up and start accepting loan requests. Yet, we also deliver customized features in record time."
               text3="1/20"
