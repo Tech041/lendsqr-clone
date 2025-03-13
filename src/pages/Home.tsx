@@ -3,7 +3,9 @@ import ApiBuild from "../components/ApiBuild";
 import Benefits from "../components/Benefits";
 import CeoCard from "../components/CeoCard";
 import Hero from "../components/Hero";
+import Lenders from "../components/Lenders";
 import LendingProcess from "../components/LendingProcess";
+import Notice from "../components/Notice";
 
 const Home = () => {
   return (
@@ -14,6 +16,8 @@ const Home = () => {
       <CeoCard />
       <Benefits />
       <ApiBuild />
+      <Notice />
+      <Lenders />
     </div>
   );
 };

@@ -18,7 +18,7 @@ const CeoCard = () => {
               <div className="">
                 <div className="relative">
                   <div className="pl-5  pb-1  text-2xl lg:text-4xl font-bold text-white flex justify-center">
-                    <p className="w-[90%] ">
+                    <p className="w-[90%]">
                       Lendsqr has significantly expedited our entry into the
                       difficult but large retail lending market. Their solution
                       not only shortened the time to market but also at a

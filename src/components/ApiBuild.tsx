@@ -22,8 +22,8 @@ const ApiBuild = () => {
                 you use our Karma blacklist APIs; and even more.
               </p>
               <div className="py-5 flex  items-center gap-4 flex-wrap">
-                <button className="px-4 py-2 bg-secondary-100 text-white rounded-md">Learn more</button>
-                <button className="px-4 py-2 bg-inherit text-white border border-gray-300 rounded-md">Read API Documentation</button>
+                <button className="px-4 py-2 bg-secondary-100 text-white rounded-md font-semibold">Learn more</button>
+                <button className="px-4 py-2 bg-inherit text-white border border-gray-300 rounded-md font-semibold">Read API Documentation</button>
               </div>
             </div>
           </div>

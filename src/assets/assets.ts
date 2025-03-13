@@ -22,6 +22,7 @@ import com_img from "./com_image.png";
 import com_2 from "./com2_mage.png";
 import fast_img from "./fast_image.png";
 import api_image from "./api_img.png";
+import notice_img from "./notice_img.png";
 
 export const assets = {
   logo,
@@ -48,4 +49,5 @@ export const assets = {
   com_img,
   fast_img,
   api_image,
+  notice_img,
 };
