@@ -4,7 +4,7 @@ import LendingTeamCard from "./LendingTeamCard";
 
 const LendingTeam = () => {
   return (
-    <section className="pt-14 bg-[#F5FCFF]">
+    <section className="pt-14 bg-[#F5FCFF] pb-12">
       <Container>
         <div className="flex">
           <div className="flex-1 w-full lg:w-auto ">

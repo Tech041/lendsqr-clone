@@ -37,7 +37,15 @@ import logo4 from "./logo4.png";
 import logo5 from "./logo5.png";
 import logo6 from "./logo6.png";
 import gambia from "./gambia.png";
-
+import sol_1 from "./solution1.png";
+import sol_2 from "./solution2.png";
+import sol_3 from "./solution3.png";
+import sol_4 from "./solution4.png";
+import sol_5 from "./solution5.png";
+import lend_img1 from "./lend1.png";
+import lend_img2 from "./lend2.png";
+import lend_img3 from "./lend3.png";
+import start_img from "./start_image.png";
 export const assets = {
   logo,
   sign_in_icon,
@@ -78,4 +86,13 @@ export const assets = {
   logo5,
   logo6,
   gambia,
+  sol_1,
+  sol_2,
+  sol_3,
+  sol_4,
+  sol_5,
+  lend_img1,
+  lend_img2,
+  lend_img3,
+  start_img,
 };
