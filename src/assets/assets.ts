@@ -23,6 +23,20 @@ import com_2 from "./com2_mage.png";
 import fast_img from "./fast_image.png";
 import api_image from "./api_img.png";
 import notice_img from "./notice_img.png";
+import nigeria from "./nigeria.png";
+import team1_img from "./team_1.png";
+import team_logo1 from "./team_logo1.png";
+import team_logo2 from "./team_logo2.png";
+import team_img2 from "./team_img2.png";
+import img3 from "./image3.png";
+import img4 from "./image4.png";
+import img5 from "./image5.png";
+import img6 from "./image6.png";
+import logo3 from "./logo3.png";
+import logo4 from "./logo4.png";
+import logo5 from "./logo5.png";
+import logo6 from "./logo6.png";
+import gambia from "./gambia.png";
 
 export const assets = {
   logo,
@@ -50,4 +64,18 @@ export const assets = {
   fast_img,
   api_image,
   notice_img,
+  team1_img,
+  team_logo1,
+  nigeria,
+  team_logo2,
+  team_img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  logo3,
+  logo4,
+  logo5,
+  logo6,
+  gambia,
 };

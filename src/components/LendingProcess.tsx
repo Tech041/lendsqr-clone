@@ -4,7 +4,8 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import LendingCard from "./LendingCard";
 import { assets } from "../assets/assets";
 
-const headingStyle = "lg:py-2 lg:my-2 text-3xl lg:text-[40px] font-bold";
+const headingStyle =
+  "lg:py-2 lg:my-2 text-3xl lg:text-4xl font-bold flex flex-wrap";
 const myStyles = "hover:bg-gray-100 hover:cursor-pointer";
 const LendingProcess = () => {
   const [selected, setSelected] = useState("Origination");
@@ -14,9 +15,9 @@ const LendingProcess = () => {
       <Container>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center ">
           <div className="text-primary-200   mt-5 py-2 flex-1 ">
-            <h2 className={headingStyle}>All the capabilities</h2>
-            <h2 className={headingStyle}>you need to simplify your</h2>
-            <h2 className={headingStyle}>lending process</h2>
+            <h2 className={headingStyle}>
+              All the capabilities you need to simplify your lending process
+            </h2>
             <div className="">
               <p className="text-primary-300 text-base lg:text-xl pt-5">
                 Our robust end-to-end loan management software enables us to

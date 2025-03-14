@@ -5,6 +5,7 @@ import CeoCard from "../components/CeoCard";
 import Hero from "../components/Hero";
 import Lenders from "../components/Lenders";
 import LendingProcess from "../components/LendingProcess";
+import LendingTeam from "../components/LendingTeam";
 import Notice from "../components/Notice";
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
       <ApiBuild />
       <Notice />
       <Lenders />
+      <LendingTeam />
     </div>
   );
 };
