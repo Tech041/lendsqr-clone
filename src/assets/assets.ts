@@ -46,6 +46,7 @@ import lend_img1 from "./lend1.png";
 import lend_img2 from "./lend2.png";
 import lend_img3 from "./lend3.png";
 import start_img from "./start_image.png";
+import loan_img from "./loan.jpg";
 export const assets = {
   logo,
   sign_in_icon,
@@ -95,4 +96,5 @@ export const assets = {
   lend_img2,
   lend_img3,
   start_img,
+  loan_img,
 };
