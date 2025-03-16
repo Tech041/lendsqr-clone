@@ -1,9 +1,31 @@
 import { useState } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
+import * as z from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+const loginSchema = z.object({
+  email: z
+    .string()
+    .email("Not valid Email")
+    .min(1, { message: "Email is required!" }),
+  password: z.string().min(6, { message: "Must be 6 characters min" }),
+});
+type LoginDataType = z.infer<typeof loginSchema>;
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginDataType>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const formSubmit: SubmitHandler<LoginDataType> = (data) => {
+    console.log("LoginData", data);
+  };
   return (
     <main className=" h-[900px] w-full">
       <div className="flex flex-col md:flex-row h-full w-full">
@@ -39,25 +61,33 @@ const Login = () => {
             <h2 className="text-[#545F7D] text-[20px] py-2 text-center md:text-start">
               Enter details to login
             </h2>
-            <form className=" w-[80%] flex  justify-center h-[400px]  ">
+            <form
+              onSubmit={handleSubmit(formSubmit)}
+              className=" w-[80%] flex  justify-center h-[400px]  "
+            >
               <div className="w-full flex flex-col gap-3 pt-10">
                 <div className="w-full border-2  border-gray-200 h-[50px] flex items-center rounded-md">
                   <input
                     type="email"
+                    {...register("email")}
                     placeholder="Email"
                     className="outline-none placeholder:pl-2 bg-inherit pl-2 w-full"
                   />
                 </div>
+                {errors.email && (
+                  <p className="text-red-600">{errors.email?.message}</p>
+                )}
                 <div className="w-full border-2  border-gray-200 h-[50px] flex justify-between items-center pr-3 rounded-md">
                   <input
                     type={`${showPassword ? "text" : "password"}`}
+                    {...register("password")}
                     placeholder="Password"
                     className=" outline-none placeholder:pl-2 bg-inherit  pl-2  w-full"
                   />
                   {showPassword ? (
                     <span
                       onClick={() => setShowPassword((prev) => !prev)}
-                      className="text-[#] text-[12px] cursor-pointer"
+                      className="text-[#39CDCC] text-[12px] cursor-pointer"
                     >
                       Hide
                     </span>
@@ -70,13 +100,19 @@ const Login = () => {
                     </span>
                   )}
                 </div>
+                {errors.password && (
+                  <p className="text-red-600">{errors.password?.message}</p>
+                )}
+
                 <div className="">
                   <p className="text-[#39CDCC] text-[12px] cursor-pointer ">
                     Forgot Password?
                   </p>
                 </div>
-                <div className="h-[50px] w-full bg-[#39CDCC] rounded-md flex justify-center items-center hover:bg-[#87f5f5] ">
-                  <button className="text-white">Login</button>
+                <div className="h-[50px] w-full bg-[#39CDCC] rounded-md flex justify-center items-center hover:bg-[#87f5f5] cursor-pointer">
+                  <button type="submit" className="text-white">
+                    Login
+                  </button>
                 </div>
                 <div className="text-right">
                   <Link

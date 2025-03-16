@@ -310,6 +310,7 @@ export const userInfo = [
         gender: "M",
         marital_status: "Single",
         address: "Ojo Lagos State",
+        bank:'Union Bank'
       },
       education_and_employment: {
         level: "B.Sc",
@@ -317,7 +318,7 @@ export const userInfo = [
         sector: "Fintec",
         duration: 4,
         office_email: "nelson@gmail.com",
-        monthly_icome: 250000.99,
+        monthly_income: 250000.99,
       },
       socials: {
         twitter: "@fend-1943",

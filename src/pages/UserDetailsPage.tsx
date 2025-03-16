@@ -3,6 +3,9 @@ import { assets, userInfo } from "../assets/assets";
 import Container from "../components/Container";
 import Sidebar from "../components/Sidebar";
 import UserNavbar from "../components/UserNavbar";
+import { useContext } from "react";
+import { UserContext } from "../context/AppContext";
+
 
 const styles =
   "hover:text-secondary-100  text-primary-300 font-semibold hover:border-b-2 border-secondary-100 hover:text-secondary-100 hover:cursor-pointer";
@@ -11,6 +14,7 @@ const spanStyle = "text-xs text-primary-300  uppercase";
 const divStyle = "flex flex-col py-4  ";
 const divStyle2 = "hidden lg:flex flex-col py-3 ";
 const Dashboard = () => {
+  const { currency } = useContext(UserContext);
   return (
     <main className="w-full h-full bg-white pb-10">
       <Container>
@@ -27,7 +31,7 @@ const Dashboard = () => {
             </Link>
             <div className=" font-semibold py-3 flex justify-between items-center">
               <h1 className="">User Details</h1>
-              <div className="uppercase lg:flex justify-between items-center gap-3 hidden ">
+              <div className="uppercase lg:flex justify-between items-center gap-3 hidden px-4 ">
                 <span className="px-2 py-1 text-red-600 border rounded-lg border-red-700">
                   Blacklist user
                 </span>
@@ -84,12 +88,17 @@ const Dashboard = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex-[5] pl-3 lg:pl-10 flex  lg:justify-start flex-col  items-center lg:items-start  ">
-                  <p className="text-primary-200 font-semibold text-lg">
-                    #200,000.00
-                  </p>
-                  <p className="">First Bank</p>
-                </div>
+                {userInfo.map((item) => (
+                  <div
+                    key={item.user_1.personalData.full_name}
+                    className="flex-[5] pl-3 lg:pl-10 flex  lg:justify-start flex-col  items-center lg:items-start  "
+                  >
+                    <p className="text-primary-200 font-semibold text-lg">
+                      {currency}{item.user_1.education_and_employment.monthly_income}
+                    </p>
+                    <p className="">{item.user_1.personalData.bank}</p>
+                  </div>
+                ))}
               </div>
               {/* bottom */}
               <div className="pt-10 lg:flex justify-between items-center hidden ">
@@ -201,7 +210,7 @@ const Dashboard = () => {
                     <div className={divStyle}>
                       <span className={spanStyle}>monthly income</span>
                       <span className={spanValue}>
-                        {user.user_1.education_and_employment.monthly_icome}
+                        {user.user_1.education_and_employment.monthly_income}
                       </span>
                     </div>
                   </div>

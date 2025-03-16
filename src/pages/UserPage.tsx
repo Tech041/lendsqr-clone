@@ -44,6 +44,13 @@ const UserPage = () => {
                   className="border rounded-md w-full px-4 py-2"
                 />
               </div>
+              <div className="pt-3">
+                <input
+                  type="text"
+                  placeholder="User's Bank Name"
+                  className="border rounded-md w-full px-4 py-2"
+                />
+              </div>
               <div className="">
                 {/* wrappper */}
 
