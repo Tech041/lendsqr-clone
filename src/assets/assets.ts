@@ -299,7 +299,7 @@ export const userData = [
     status: "Inactive",
   },
 ];
-export const users = [
+export const userInfo = [
   {
     user_1: {
       personalData: {

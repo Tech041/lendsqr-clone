@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { assets, users } from "../assets/assets";
+import { assets, userInfo } from "../assets/assets";
 import Container from "../components/Container";
 import Sidebar from "../components/Sidebar";
 import UserNavbar from "../components/UserNavbar";
@@ -103,9 +103,9 @@ const Dashboard = () => {
             </div>
 
             {/* Container for user details */}
-            {users.map((user) => (
+            {userInfo.map((user) => (
               <div
-                key={user.user_1}
+                key={user.user_1.personalData.full_name}
                 className=" bg-white shadow-xl  mt-5 px-4 py-2"
               >
                 <div className="py-3 my-4">
