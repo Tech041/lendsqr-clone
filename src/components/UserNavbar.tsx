@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
 
 const UserNavbar = () => {
@@ -6,13 +7,15 @@ const UserNavbar = () => {
       <div className=" flex-1 flex justify-between">
         {/* left */}
         <div className="">
-          <img
-            src={assets.logo}
-            width={144}
-            height={30}
-            alt="logo"
-            className="w-[144px] h-[30px]"
-          />
+          <Link to={"/"}>
+            <img
+              src={assets.logo}
+              width={144}
+              height={30}
+              alt="logo"
+              className="w-[144px] h-[30px]"
+            />
+          </Link>
         </div>
         <div className="hidden  lg:flex  justify-center items-center bg-white w-[400px]  ">
           <input
