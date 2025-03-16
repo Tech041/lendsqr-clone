@@ -29,7 +29,7 @@ const LendianSection = () => {
               text4="November 11, 2024"
             />
           </div>{" "}
-          <div className="flex-1">
+          <div className="flex-1 bg-white">
             <LendianCard
               src={assets.lend_img2}
               text1="Lending"
@@ -38,7 +38,7 @@ const LendianSection = () => {
               text4="February 25, 2025"
             />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 bg-white">
             <LendianCard
               src={assets.lend_img3}
               text1="Lending"
