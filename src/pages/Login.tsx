@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 import * as z from "zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-const loginSchema = z.object({
-  email: z
-    .string()
-    .email("Not valid Email")
-    .min(1, { message: "Email is required!" }),
-  password: z.string().min(6, { message: "Must be 6 characters min" }),
-});
+import { loginSchema } from "../models/Schema";
+import { UserContext } from "../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 type LoginDataType = z.infer<typeof loginSchema>;
 
 const Login = () => {
+  const { token, setToken, navigate, backendUrl } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -23,9 +21,27 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const formSubmit: SubmitHandler<LoginDataType> = (data) => {
-    console.log("LoginData", data);
+  const formSubmit: SubmitHandler<LoginDataType> = async (
+    data: LoginDataType
+  ) => {
+    try {
+      const response = await axios.post(backendUrl + "api/user/login", data);
+      if (response.data.success) {
+        setToken(response.data.token);
+        sessionStorage.setItem("token", response.data.token);
+        toast.success("You are logged in");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  useEffect(() => {
+    if (token) {
+      navigate("/user");
+    }
+  }, [token]);
   return (
     <main className=" h-[900px] w-full">
       <div className="flex flex-col md:flex-row h-full w-full">

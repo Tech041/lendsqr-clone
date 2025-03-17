@@ -1,20 +1,17 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-const registerSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  email: z
-    .string()
-    .email("Not a valid email")
-    .min(1, { message: "Email is required" }),
-  password: z.string().min(6, { message: "Password must be 6 charactees min" }),
-});
+import { registerSchema } from "../models/Schema";
+import { UserContext } from "../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 type RegisterDataType = z.infer<typeof registerSchema>;
 
 const Register = () => {
+  const { backendUrl, token, setToken, navigate } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -23,9 +20,27 @@ const Register = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const formSubmit: SubmitHandler<RegisterDataType> = (data) => {
-    console.log("FormData", data);
+  const formSubmit: SubmitHandler<RegisterDataType> = async (
+    data: RegisterDataType
+  ) => {
+    try {
+      const response = await axios.post(backendUrl + "api/user/register", data);
+      if (response.data.success) {
+        toast.success("Registration Successful");
+        setToken(response.data.token);
+        sessionStorage.setItem("token", response.data.token);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  useEffect(() => {
+    if (token) {
+      navigate("/user");
+    }
+  }, [token]);
   const [showPassword, setShowPassword] = useState(false);
   return (
     <main className=" h-[900px] w-full">

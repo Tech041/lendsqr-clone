@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { useContext } from "react";
+import { UserContext } from "../context/AppContext";
 
 const UserNavbar = () => {
+  const { token,handleLogOut } = useContext(UserContext);
+ 
+
   return (
     <nav className="w-full h-[100px] flex justify-between items-center  px-5 ">
       <div className=" flex-1 flex justify-between">
@@ -58,16 +63,26 @@ const UserNavbar = () => {
               className="w-[48px] h-[48px] rounded-full"
             />
 
-            <div className="flex justify-between gap-1">
+            <div className="flex justify-between gap-1 group">
               <p className="hidden lg:block">Perterson</p>
 
-              <img
-                src={assets.drop_down_icon}
-                width={20}
-                height={20}
-                alt=""
-                className="w-[20px] h-[20px]"
-              />
+              <p className="hover:cursor-pointer">
+                <img
+                  src={assets.drop_down_icon}
+                  width={20}
+                  height={20}
+                  alt=""
+                  className="w-[20px] h-[20px]"
+                />
+                {token && (
+                  <span
+                    onClick={handleLogOut}
+                    className="hidden group-hover:block  hover:bg-gray-300 text-black px-2 py-1 rounded-md"
+                  >
+                    Logout
+                  </span>
+                )}
+              </p>
             </div>
           </div>
         </div>

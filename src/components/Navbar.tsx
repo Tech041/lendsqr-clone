@@ -2,10 +2,11 @@ import { assets } from "../assets/assets";
 import Container from "./Container";
 import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Hover from "./Hover";
+import { UserContext } from "../context/AppContext";
 const divStyle =
   "flex-1 flex justify-center items-center text-black font-semibold px-3 group hover:cursor-pointer";
 const imageStyle =
@@ -13,6 +14,8 @@ const imageStyle =
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { token, setToken, handleLogOut } = useContext(UserContext);
+  setToken(sessionStorage.getItem("token"));
   return (
     <header className="w-full py-5 fixed bg-white  shadow-xl z-50 backdrop-blur-2xl border-b-2 lg:border-b-0  ">
       <Container>
@@ -133,15 +136,26 @@ const Navbar = () => {
             {/* right div */}
             <div className="flex-1 hidden lg:flex justify-end items-center gap-5 ">
               <div className="">
-                <Link to={"/login"} className="text-black font-semibold">
-                  Log In
-                </Link>
+                {token ? (
+                  <span
+                    onClick={handleLogOut}
+                    className="text-white font-semibold bg-primary-200 px-4 py-2 cursor-pointer rounded-md"
+                  >
+                    Log Out
+                  </span>
+                ) : (
+                  <Link to={"/login"} className="text-black font-semibold">
+                    Log In
+                  </Link>
+                )}
               </div>
-              <Link to={"/register"} className="bg-secondary-100 rounded">
-                <button className="text-white font-semibold px-4 py-2">
-                  Create Free Account
-                </button>
-              </Link>
+              {token ? null : (
+                <Link to={"/register"} className="bg-secondary-100 rounded">
+                  <button className="text-white font-semibold px-4 py-2">
+                    Create Free Account
+                  </button>
+                </Link>
+              )}
             </div>
             <div
               onClick={() => setOpen((prev) => !prev)}
@@ -188,20 +202,31 @@ const Navbar = () => {
               {/* down links */}
               <div className="absolute bottom-24 w-full">
                 <div className="w-full text-center pb-3">
-                  <Link
-                    to={"/login"}
-                    className=" text-primary-200 font-semibold"
-                  >
-                    Log In
-                  </Link>
+                  {token ? (
+                    <span
+                      onClick={handleLogOut}
+                      className="text-primary-200 font-bold cursor-pointer hover:text-gray-500"
+                    >
+                      Log Out
+                    </span>
+                  ) : (
+                    <Link
+                      to={"/login"}
+                      className=" text-primary-200 font-semibold"
+                    >
+                      Log In
+                    </Link>
+                  )}
                 </div>
-                <div className=" w-full bg-secondary-200 rounded text-center">
-                  <Link to={"/register"}>
-                    <button className=" text-white font-semibold  py-3">
-                      Create Free Account
-                    </button>
-                  </Link>
-                </div>
+                {!token && (
+                  <div className=" w-full bg-secondary-200 rounded text-center">
+                    <Link to={"/register"}>
+                      <button className=" text-white font-semibold  py-3">
+                        Create Free Account
+                      </button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </nav>
           )}

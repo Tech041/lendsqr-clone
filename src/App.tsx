@@ -6,12 +6,14 @@ import UserDetailsPage from "./pages/UserDetailsPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify";
 const App = () => {
   const isHomePage = useMatch("/");
 
   return (
     <div className="">
       {isHomePage && <Navbar />}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
