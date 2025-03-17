@@ -3,9 +3,8 @@ import { assets, userInfo } from "../assets/assets";
 import Container from "../components/Container";
 import Sidebar from "../components/Sidebar";
 import UserNavbar from "../components/UserNavbar";
-import { useContext } from "react";
+import {useContext } from "react";
 import { UserContext } from "../context/AppContext";
-
 
 const styles =
   "hover:text-secondary-100  text-primary-300 font-semibold hover:border-b-2 border-secondary-100 hover:text-secondary-100 hover:cursor-pointer";
@@ -15,6 +14,7 @@ const divStyle = "flex flex-col py-4  ";
 const divStyle2 = "hidden lg:flex flex-col py-3 ";
 const Dashboard = () => {
   const { currency } = useContext(UserContext);
+
   return (
     <main className="w-full h-full bg-white pb-10">
       <Container>
@@ -94,7 +94,8 @@ const Dashboard = () => {
                     className="flex-[5] pl-3 lg:pl-10 flex  lg:justify-start flex-col  items-center lg:items-start  "
                   >
                     <p className="text-primary-200 font-semibold text-lg">
-                      {currency}{item.user_1.education_and_employment.monthly_income}
+                      {currency}
+                      {item.user_1.education_and_employment.monthly_income}
                     </p>
                     <p className="">{item.user_1.personalData.bank}</p>
                   </div>
