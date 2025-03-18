@@ -7,19 +7,38 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { userSchema } from "../models/Schema";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 type userDataType = z.infer<typeof userSchema>;
 const UserPage = () => {
+  const { token, navigate, backendUrl } = useContext(UserContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<userDataType>({ resolver: zodResolver(userSchema) });
 
-  const handleFormSubmit: SubmitHandler<userDataType> = (data) => {
-    console.log("FormData", data);
+  const handleFormSubmit: SubmitHandler<userDataType> = async (
+    data: userDataType
+  ) => {
+    try {
+      const response = await axios.post(
+        backendUrl + "api/user/user-details",
+        data
+      );
+      console.log(data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
-  const { token, navigate } = useContext(UserContext);
+
   useEffect(() => {
     if (!token) {
       navigate("/login");
@@ -108,10 +127,10 @@ const UserPage = () => {
                       {...register("gender")}
                       className="px-4 py-2 border rounded-md w-full"
                     >
-                      <option value="male" className="">
+                      <option value="Male" className="">
                         Male
                       </option>
-                      <option value="female" className="">
+                      <option value="Female" className="">
                         Female
                       </option>
                     </select>
@@ -125,10 +144,10 @@ const UserPage = () => {
                       {...register("marital_status")}
                       className="border rounded-md  w-full px-4 py-2"
                     >
-                      <option value="single" className="">
+                      <option value="Single" className="">
                         Single
                       </option>
-                      <option value="married" className="">
+                      <option value="Married" className="">
                         Married
                       </option>
                     </select>
@@ -162,10 +181,10 @@ const UserPage = () => {
                       {...register("employment_status")}
                       className="border rounded-md  w-full px-4 py-2"
                     >
-                      <option value="employee" className="">
+                      <option value="Employee" className="">
                         Employee
                       </option>
-                      <option value="employer" className="">
+                      <option value="Employer" className="">
                         Employer
                       </option>
                     </select>
@@ -257,13 +276,15 @@ const UserPage = () => {
                   <h2 className="">Monthly Income</h2>
                   <div className="">
                     <input
-                      {...register("income")}
+                      {...register("monthly_income")}
                       type="tel"
                       placeholder="Income.."
                       className="border rounded-md w-full px-4 py-2"
                     />
-                    {errors.income && (
-                      <p className="text-red-600">{errors.income.message}</p>
+                    {errors.monthly_income && (
+                      <p className="text-red-600">
+                        {errors.monthly_income.message}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -350,14 +371,14 @@ const UserPage = () => {
                   <h2 className="">Full Name</h2>
                   <div className="">
                     <input
-                      {...register("guarantor_name")}
+                      {...register("guarantor_full_name")}
                       type="text"
                       placeholder="Guarantor's Full Name"
                       className="border rounded-md w-full px-4 py-2"
                     />
-                    {errors.guarantor_name && (
+                    {errors.guarantor_full_name && (
                       <p className="text-red-600">
-                        {errors.guarantor_name.message}
+                        {errors.guarantor_full_name.message}
                       </p>
                     )}
                   </div>
@@ -399,15 +420,15 @@ const UserPage = () => {
                   <h2 className="">Relationship</h2>
                   <div className="">
                     <input
-                      {...register("relationship")}
+                      {...register("guarantor_relationship")}
                       type="text"
                       placeholder="Relationship"
                       className="border rounded-md w-full px-4 py-2"
                     />
 
-                    {errors.relationship && (
+                    {errors.guarantor_relationship && (
                       <p className="text-red-600">
-                        {errors.relationship.message}
+                        {errors.guarantor_relationship.message}
                       </p>
                     )}
                   </div>

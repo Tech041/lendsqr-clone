@@ -21,6 +21,8 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
   const currency = "₦";
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+  
+
   // HandleLogOut
   const handleLogOut = () => {
     sessionStorage.removeItem("token");
@@ -35,7 +37,6 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
     setToken,
     navigate,
     handleLogOut,
-    
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
