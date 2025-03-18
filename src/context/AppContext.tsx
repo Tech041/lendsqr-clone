@@ -9,7 +9,7 @@ interface UserContextProp {
   token: string;
   setToken: (token: string) => void;
   navigate: NavigateFunction;
-  handleLogOut:()=>void
+  handleLogOut: () => void;
 }
 
 export const UserContext = createContext<UserContextProp | undefined>(
@@ -19,7 +19,7 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
   const [token, setToken] = useState("");
   const navigate: NavigateFunction = useNavigate();
   const currency = "₦";
-  const backendUrl = "http://localhost:4000/";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // HandleLogOut
   const handleLogOut = () => {
@@ -34,7 +34,8 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
     token,
     setToken,
     navigate,
-    handleLogOut
+    handleLogOut,
+    
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
