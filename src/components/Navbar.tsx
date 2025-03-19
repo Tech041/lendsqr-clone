@@ -139,7 +139,7 @@ const Navbar = () => {
                 {token ? (
                   <span
                     onClick={handleLogOut}
-                    className="text-white font-semibold bg-primary-200 px-4 py-2 cursor-pointer rounded-md"
+                    className="text-white font-semibold bg-red-600 px-4 py-2 cursor-pointer rounded-md"
                   >
                     Log Out
                   </span>
@@ -205,7 +205,7 @@ const Navbar = () => {
                   {token ? (
                     <span
                       onClick={handleLogOut}
-                      className="text-primary-200 font-bold cursor-pointer hover:text-gray-500"
+                      className="text-red-600 font-bold cursor-pointer hover:text-gray-500"
                     >
                       Log Out
                     </span>

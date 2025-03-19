@@ -63,7 +63,7 @@ const UserNavbar = () => {
               className="w-[48px] h-[48px] rounded-full"
             />
 
-            <div className="flex justify-between gap-1 group">
+            <div className="flex justify-between gap-1">
               <p className="hidden lg:block">Perterson</p>
 
               <p className="hover:cursor-pointer">
@@ -77,7 +77,7 @@ const UserNavbar = () => {
                 {token && (
                   <span
                     onClick={handleLogOut}
-                    className="hidden group-hover:block  hover:bg-gray-300 text-black px-2 py-1 rounded-md"
+                    className=" hover:bg-gray-300 text-red-600 px-2 py-1 rounded-md"
                   >
                     Logout
                   </span>

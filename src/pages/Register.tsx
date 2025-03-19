@@ -8,10 +8,12 @@ import { registerSchema } from "../models/Schema";
 import { UserContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Spinner from "../components/spinner";
 type RegisterDataType = z.infer<typeof registerSchema>;
 
 const Register = () => {
-  const { backendUrl, token, setToken, navigate } = useContext(UserContext);
+  const { backendUrl, token, setToken, navigate, loading, setLoading } =
+    useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -23,9 +25,11 @@ const Register = () => {
   const formSubmit: SubmitHandler<RegisterDataType> = async (
     data: RegisterDataType
   ) => {
+    setLoading(true);
     try {
       const response = await axios.post(backendUrl + "api/user/register", data);
       if (response.data.success) {
+        setLoading(false);
         toast.success("Registration Successful");
         setToken(response.data.token);
         sessionStorage.setItem("token", response.data.token);
@@ -138,9 +142,13 @@ const Register = () => {
                   </p>
                 </div>
                 <div className="h-[50px] w-full bg-[#39CDCC] rounded-md flex justify-center items-center hover:bg-[#87f5f5] ">
-                  <button type="submit" className="text-white">
-                    Register
-                  </button>
+                  {loading ? (
+                    <Spinner />
+                  ) : (
+                    <button type="submit" className="text-white">
+                      Register
+                    </button>
+                  )}
                 </div>
                 <div className="text-right">
                   <Link

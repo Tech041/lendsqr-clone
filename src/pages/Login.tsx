@@ -8,11 +8,14 @@ import { loginSchema } from "../models/Schema";
 import { UserContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Spinner from "../components/spinner";
 type LoginDataType = z.infer<typeof loginSchema>;
 
 const Login = () => {
-  const { token, setToken, navigate, backendUrl } = useContext(UserContext);
+  const { token, setToken, navigate, backendUrl, loading, setLoading } =
+    useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -24,9 +27,12 @@ const Login = () => {
   const formSubmit: SubmitHandler<LoginDataType> = async (
     data: LoginDataType
   ) => {
+    setLoading(true);
     try {
       const response = await axios.post(backendUrl + "api/user/login", data);
+
       if (response.data.success) {
+        setLoading(false);
         setToken(response.data.token);
         sessionStorage.setItem("token", response.data.token);
         toast.success("You are logged in");
@@ -126,9 +132,13 @@ const Login = () => {
                   </p>
                 </div>
                 <div className="h-[50px] w-full bg-[#39CDCC] rounded-md flex justify-center items-center hover:bg-[#87f5f5] cursor-pointer">
-                  <button type="submit" className="text-white">
-                    Login
-                  </button>
+                  {loading ? (
+                    <Spinner />
+                  ) : (
+                    <button type="submit" className="text-white">
+                      Login
+                    </button>
+                  )}
                 </div>
                 <div className="text-right">
                   <Link

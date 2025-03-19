@@ -1,11 +1,26 @@
-import { assets, userData } from "../assets/assets";
+import axios from "axios";
+import { assets } from "../assets/assets";
 import Container from "../components/Container";
 import Sidebar from "../components/Sidebar";
 import UserCard from "../components/UserCard";
-import UserDetails from "../components/UserDetails";
+import UserDetails, { UserDetailsProp } from "../components/UserDetails";
 import UserNavbar from "../components/UserNavbar";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../context/AppContext";
 
 const Dashboard = () => {
+  const { userDetails, setUserDetails, backendUrl } = useContext(UserContext);
+  const getAllUserDetails = async () => {
+    const response = await axios.get(backendUrl + "api/user/all-users", {});
+    if (response.data.success) {
+      console.log(response.data);
+      setUserDetails(response.data.usersDetails);
+    }
+  };
+  useEffect(() => {
+    getAllUserDetails();
+    console.log("User deatils are :", userDetails);
+  }, []);
   return (
     <main className="w-full h-full bg-white pb-10">
       <Container>
@@ -16,17 +31,25 @@ const Dashboard = () => {
             <h1 className="px-4 font-semibold py-1">USERS</h1>
             <div className="flex  flex-col lg:flex-row lg:justify-between gap-2 py-2 ">
               {/* card */}
-              <UserCard src={assets.icon_2} text="USERS" value="2,453" />
-              <UserCard src={assets.icon_2} text="ACTIVE USERS" value="2,453" />
+              <UserCard
+                src={assets.icon_2}
+                text="USERS"
+                value={userDetails.length}
+              />
+              <UserCard
+                src={assets.icon_2}
+                text="ACTIVE USERS"
+                value={userDetails.length}
+              />
               <UserCard
                 src={assets.icon_4}
                 text="USERS WITH LOANS"
-                value="12,344"
+                value={userDetails.length}
               />
               <UserCard
                 src={assets.icon_3}
                 text="USERS WITH SAVINGS"
-                value="10,234"
+                value={userDetails.length}
               />
             </div>
 
@@ -35,36 +58,20 @@ const Dashboard = () => {
               <table className="min-w-full border-collapse  ">
                 <thead>
                   <tr className="border-b">
-                    <th className="  px-4 py-2 capitalize  ">
-                      Organization
-                    </th>
-                    <th className="  px-4 py-2 capitalize">
-                      username
-                    </th>
-                    <th className="  px-4 py-2 capitalize">
-                      email
-                    </th>
-                    <th className="  px-4 py-2 capitalize ">
-                      phone number
-                    </th>
-                    <th className=" px-4 py-2 capitalize ">
-                      date joined
-                    </th>
-                    <th className=" px-4 py-2 capitalize ">
-                      status
-                    </th>
+                    <th className="  px-4 py-2 capitalize  ">Organization</th>
+                    <th className="  px-4 py-2 capitalize">full name</th>
+                    <th className="  px-4 py-2 capitalize">email</th>
+                    <th className=" px-4 py-2 capitalize ">status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {userData.map((user) => (
+                  {userDetails.map((user: UserDetailsProp) => (
                     <UserDetails
-                      key={user.id}
-                      organization={user.organization}
-                      username={user.username}
+                      key={user.email}
+                      sector={user.sector}
+                      full_name={user.full_name}
                       email={user.email}
-                      phone={user.phone}
-                      date={user.date_joined}
-                      status={user.status}
+                      level={user.level}
                     />
                   ))}
                 </tbody>

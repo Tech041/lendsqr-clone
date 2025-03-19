@@ -10,6 +10,10 @@ interface UserContextProp {
   setToken: (token: string) => void;
   navigate: NavigateFunction;
   handleLogOut: () => void;
+  userDetails: object[];
+  setUserDetails: (userDetails: object[]) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const UserContext = createContext<UserContextProp | undefined>(
@@ -17,11 +21,9 @@ export const UserContext = createContext<UserContextProp | undefined>(
 );
 export const AppContextProvider = ({ children }: AppContextProp) => {
   const [token, setToken] = useState("");
+  const [userDetails, setUserDetails] = useState<object[]>([]);
   const navigate: NavigateFunction = useNavigate();
-  const currency = "₦";
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-  
+  const [loading, setLoading] = useState(false);
 
   // HandleLogOut
   const handleLogOut = () => {
@@ -30,6 +32,9 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
     navigate("/login");
   };
 
+  const currency = "₦";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   const value: UserContextProp = {
     currency,
     backendUrl,
@@ -37,6 +42,10 @@ export const AppContextProvider = ({ children }: AppContextProp) => {
     setToken,
     navigate,
     handleLogOut,
+    userDetails,
+    setUserDetails,
+    loading,
+    setLoading,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

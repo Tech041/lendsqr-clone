@@ -1,28 +1,19 @@
-interface UserDetailsProp {
-  organization: string;
-  username: string;
+export interface UserDetailsProp {
+  sector: string;
+  full_name: string;
   email: string;
-  phone: string;
-  date: string;
-  status: string;
+  phone?: string;
+  date?: string;
+  level: string;
 }
 const styles = "border-b border-gray-300 px-4 py-6";
-const UserDetails = ({
-  organization,
-  username,
-  email,
-  phone,
-  date,
-  status,
-}: UserDetailsProp) => {
+const UserDetails = ({ sector, full_name, email, level }: UserDetailsProp) => {
   return (
     <tr>
-      <td className={styles}>{organization}</td>
-      <td className={styles}>{username}</td>
+      <td className={styles}>{sector}</td>
+      <td className={styles}>{full_name}</td>
       <td className={styles}>{email}</td>
-      <td className={styles}>{phone}</td>
-      <td className={styles}>{date}</td>
-      <td className={styles}>{status}</td>
+      <td className={styles}>{level}</td>
     </tr>
   );
 };

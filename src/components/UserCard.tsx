@@ -1,7 +1,7 @@
 interface UserCardProp {
   src: string;
   text: string;
-  value: string;
+  value: number;
 }
 const UserCard = ({ src, text, value }: UserCardProp) => {
   return (

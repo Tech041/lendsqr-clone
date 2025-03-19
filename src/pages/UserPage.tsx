@@ -25,7 +25,8 @@ const UserPage = () => {
     try {
       const response = await axios.post(
         backendUrl + "api/user/user-details",
-        data
+        data,
+        { headers: { token } }
       );
       console.log(data);
       if (response.data.success) {
